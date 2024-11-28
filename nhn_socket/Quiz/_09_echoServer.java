@@ -1,4 +1,4 @@
-package _19.nhn_socket.Quiz;
+package nhn_socket.Quiz;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,13 +12,10 @@ public class _09_echoServer {
     public static void main(String[] args) {
         /* 
             1. 실행시 서비스를 위한 port를 지정할 수 있다. 별도의 port 지정이 없는 경우, 1234를 기본으로 한다.
-            
 
             2. Server는 실행 후 대기 상태를 유지하고, client가 접속되면 client 정보를 출력한다.
 
-
             3. Server에서는 연결된 socket이 끊어지기 전까지 client에서 보내온 데이터를 client로 다시 돌려 보낸다.
-
 
             4. Client 연결이 끊어지면, server socket을 닫고 프로그램을 종료한다.
         */
@@ -55,10 +52,15 @@ public class _09_echoServer {
                  * 이후, 이 소켓에서 입출력 스트림(InputStream, OutputStream)을 생성하여
                  * 실제 데이터 송수신 작업이 이루어진다.
                  */
-                Socket clientSocket = serverSocket.accept();
+                Socket clientSocket = serverSocket.accept(); // 서버 소켓은 수락을 하면 새로운 소켓을 생성한다.
+                // 새로 생성된 소켓을 가지고 클라이언트와 서버가 서로 통신을 하는 것이다.
 
                 // 클라이언트 정보 출력
                 System.out.println("클라이언트 연결 됨 : ");
+                // clientSocket.getInetAddress() : 클라이언트의 IP 주소 정보를 나타내내는 객체 (InetAddress)를 반환한다.
+                // 이 객체는 네트워크 상에서 클라이언트를 식별하기 위한 IP 주소를 포함한다.
+                // getHostAddress() : InetAddress 객체에서 실제 IP 주소를 문자열 형태로 반환한다.
+                // 클라이언트의 IP 주소가 192.168.0.101이라면 이 메서드는 "192.168.0.101" 문자열을 반환합니다.
                 System.out.println("IP 주소 : " + clientSocket.getInetAddress().getHostAddress());
                 System.out.println("포트 번호 : " + clientSocket.getPort());
 
@@ -66,10 +68,12 @@ public class _09_echoServer {
                 /*
                  * clientSocket.getInputStream() : 클라이언트가 서버로 보내는 데이터를 읽기 위한 입력 스트림을 가져온다.
                  * 소켓은 네트워크 연결을 통해 데이터룰 주고받으므로, 데이터를 읽으려면 이 스트림을 사용해야 한다.
+                 * (바이트 기반)
                  * 
                  * InputStreamReader() : 바이트 기반의 InputSream을 문자 기반으로 변환하는 역할을 한다.
                  * 네트워크 데이터는 기본적으로 바이트(byte) 단위로 전송되기 때문에, 이를 사람이 읽을 수 있는 문자 데이터로
                  * 변환해야 한다.
+                 * (문자 데이터로 변환)
                  * 
                  * BufferedReader() : 문자 기반의 입력 스트림에 버퍼링 기능을 추가하여 효율적으로 데이터를 읽을 수 있다.
                  * readLine() : 이 메서드를 사용하여 한 줄 단위로 데이터를 읽을 수 있다.
@@ -96,6 +100,7 @@ public class _09_echoServer {
                     while ((receivedMessage = in.readLine()) != null) {
                         System.out.println("클라이언트로부터 받은 메시지: " + receivedMessage);
                         out.println(receivedMessage); // 클라이언트로 메시지 전송
+                        // 서버가 받은 메시지를 그대로 클라이언트에게 다시 보낸다. (에코 기능)
                     }
                 } catch (Exception e) {
                     System.err.println("클라이언트와의 통신 중 오류 발생: " + e.getMessage());

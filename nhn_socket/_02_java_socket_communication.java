@@ -1,4 +1,4 @@
-package _19.nhn_socket;
+package nhn_socket;
 
 import java.net.Socket;
 

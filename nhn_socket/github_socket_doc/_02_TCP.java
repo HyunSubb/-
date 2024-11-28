@@ -1,4 +1,4 @@
-package _19.이론;
+package nhn_socket.github_socket_doc;
 
 public class _02_TCP {
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class _02_TCP {
          * 1. FIN : 송신자가 연결 종료 요청을 보낸다.
          * 2. ACK : 수신자가 연결 종료 요청을 확인한다.
          * 3. FIN : 수신자가 연결 종료 요청을 보낸다.
-         * 4. ACK : 송신자가 수신자의 연결 요청을 확인하고 연결이 종료된다.
+         * 4. ACK : 송신자가 수신자의 연결 요청을 확인하고 연결이 종료
          */
     }
 }

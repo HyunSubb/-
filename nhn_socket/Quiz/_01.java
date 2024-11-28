@@ -1,4 +1,4 @@
-package _19.nhn_socket.Quiz;
+package nhn_socket.Quiz;
 
 import java.net.ServerSocket;
 import java.net.Socket;

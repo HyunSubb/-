@@ -1,4 +1,4 @@
-package _19.nhn_socket;
+package nhn_socket;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -46,6 +46,5 @@ public class _04_serverSocket {
         // } catch (IOException e) {
         //     e.printStackTrace();
         // }
-
     }
 }
