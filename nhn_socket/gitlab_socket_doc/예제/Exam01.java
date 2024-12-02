@@ -5,10 +5,11 @@ import java.net.Socket;
 public class Exam01 {
     /*
      * exam01) 클라이언트 소켓을 이용해서 server에 연결해보기
+     * 192.168.71.216
      */
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("192.168.71.216", 4321);
+            Socket socket = new Socket("localhost", 4321);
             // IP와 포트번호를 이용해서 서버에 접속하기
             // 라즈베리파이접속해서 포트 열어준 다음 접속해주기.
             System.out.println("서버에 연결되었습니다.");

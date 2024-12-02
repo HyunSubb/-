@@ -6,11 +6,12 @@ import java.net.Socket;
 
 public class Exam02 {
     public static void main(String[] args) {
-        String ipAddress = "192.168.71.216";
+        // String ipAddress = "192.168.71.216";
+        String ipAddress = "localhost";
         int port = 4321;
 
         try(Socket socket = new Socket(ipAddress, port)) {
-            System.out.println(ipAddress + ":"+ port + " 에 접속하였습니다.");
+            System.out.println(ipAddress + " : "+ port + " 에 접속하였습니다.");
             
             System.out.println("Local address : " + socket.getLocalAddress().getHostAddress());
             System.out.println("Local port : " + socket.getLocalPort());
@@ -27,7 +28,7 @@ public class Exam02 {
 
             // PrintWriter를 사용하여 문자열을 출력
             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-            
+
             // 문자열 전송
             out.println("HELLO~!");
 

@@ -94,10 +94,13 @@ public class _09_echoServer {
 
                     // 클라이언트로부터 메시지를 읽고 다시 돌려보냄
                     /*
-                     * in.readLine() : 클라이언트가 보낸 데이터를 한 줄 단위로 읽는다. 클라이언트가 메시지를 보냈다면 그 내용이
-                     * receivedMessage 변수에 저장된다.
+                     * in.readLine() : 클라이언트가 보낸 데이터를 한 줄 단위로 읽는다. 
+                     * 클라이언트가 메시지를 보냈다면 그 내용이 receivedMessage 변수에 저장된다.
                      */
                     while ((receivedMessage = in.readLine()) != null) {
+                        if(receivedMessage.equals("exit")) {
+                            break;
+                        }
                         System.out.println("클라이언트로부터 받은 메시지: " + receivedMessage);
                         out.println(receivedMessage); // 클라이언트로 메시지 전송
                         // 서버가 받은 메시지를 그대로 클라이언트에게 다시 보낸다. (에코 기능)
